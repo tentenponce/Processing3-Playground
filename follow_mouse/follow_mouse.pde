@@ -12,10 +12,10 @@ void setup() {
 void draw() {
   PVector mouse = new PVector(mouseX, mouseY);
   
-  PVector direction = mouse.sub(location);
-  direction.setMag(1);
+  PVector acceleration = mouse.sub(location);
+  acceleration.setMag(1);
   
-  velocity.add(direction);
+  velocity.add(acceleration);
   velocity.limit(10);
   
   location.add(velocity);
