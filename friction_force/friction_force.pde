@@ -1,4 +1,4 @@
-PVector INITIAL_VELOCITY = new PVector(10, 0);
+PVector INITIAL_VELOCITY = new PVector(10, 0); // adjust me! (well, only X value)
 
 RoughObject roughObject;
 SmoothObject smoothObject;
@@ -15,7 +15,6 @@ void setup() {
 
 void draw() {
   background(255);
-  
   roughObject.applyForce(getFrictionForce(roughObject));
   smoothObject.applyForce(getFrictionForce(smoothObject));
   
@@ -45,10 +44,13 @@ void draw() {
 */
 PVector getFrictionForce(VirtualObject obj) {
   PVector friction = obj.velocity.copy();
+  //System.out.println("friction not normalized: " + friction.x);
   friction.setMag(-1);
+  //System.out.println("friction normalized: " + friction.x);
   
   friction.mult(obj.roughLevel);
   friction.mult(obj.mass); // being the normal force
   
+  //System.out.println("calculated friction: " + friction.x);
   return friction;
 }

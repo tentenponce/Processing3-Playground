@@ -32,7 +32,10 @@ class VirtualObject {
   }
   
   void update() {
+    acceleration.mult(10);
+    velocity.mult(10);
     velocity.add(acceleration);
+    velocity.div(10);
     location.add(velocity);
     acceleration.mult(0);
   }
